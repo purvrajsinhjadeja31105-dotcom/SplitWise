@@ -208,8 +208,8 @@ const AddExpense = () => {
                         </button>
                     </div>
 
-                    <div style={{ display: 'flex', gap: '1rem', marginBottom: '1.5rem' }}>
-                         <div style={{ flex: 2 }}>
+                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', marginBottom: '1.5rem' }}>
+                         <div style={{ flex: '1 1 250px' }}>
                             <input
                                 type="text" placeholder="Description (e.g. Dinner, Rent)" className="input-field"
                                 value={description} onChange={e => setDescription(e.target.value)}
@@ -218,7 +218,7 @@ const AddExpense = () => {
                             />
                          </div>
                          {splitType === 'equal' && (
-                            <div style={{ flex: 1, position: 'relative' }}>
+                            <div style={{ flex: '1 1 150px', position: 'relative' }}>
                                 <span style={{ position: 'absolute', left: '1.1rem', top: '50%', transform: 'translateY(-50%)', fontSize: '1.2rem', opacity: 0.6 }}>₹</span>
                                 <input
                                     type="number" step="0.01" placeholder="Amount" className="input-field"
@@ -338,7 +338,7 @@ const AddExpense = () => {
                     )}
                 </div>
 
-                <div style={{ display: 'flex', gap: '1.5rem', marginTop: '4rem' }}>
+                <div className="action-row" style={{ display: 'flex', gap: '1.5rem', marginTop: '4rem' }}>
                     <button 
                         type="button" className="btn-ghost" style={{ flex: 1, padding: '1.2rem', borderRadius: '16px', fontWeight: 'bold' }}
                         onClick={() => navigate(`/group/${id}`)}

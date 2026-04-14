@@ -6,7 +6,7 @@ const Landing = () => {
     return (
         <div style={{ paddingBottom: '4rem', animation: 'fadeIn 0.5s ease-out' }}>
             {/* Hero Section */}
-            <div className="flex-center" style={{ textAlign: 'center', padding: '4rem 1rem', minHeight: '70vh' }}>
+            <div className="flex-center hero-section" style={{ textAlign: 'center', padding: '4rem 1rem', minHeight: '70vh' }}>
                 <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', background: 'var(--bg-secondary)', padding: '0.5rem 1rem', borderRadius: '999px', marginBottom: '2rem', fontSize: '0.9rem', color: 'var(--text-primary)', border: '1px solid var(--border-color)' }}>
                     <Zap size={16} className="text-gradient" />
                     <span>The ultimate way to manage shared expenses</span>
@@ -66,7 +66,7 @@ const Landing = () => {
             </div>
 
             {/* How to use it Section */}
-            <div style={{ marginTop: '8rem', padding: '4rem 2rem', background: 'var(--bg-secondary)', borderRadius: '24px', position: 'relative', overflow: 'hidden' }}>
+            <div className="steps-section" style={{ marginTop: '8rem', padding: '4rem 2rem', background: 'var(--bg-secondary)', borderRadius: '24px', position: 'relative', overflow: 'hidden' }}>
                 <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', background: 'var(--bg-gradient)', opacity: 0.5, pointerEvents: 'none' }}></div>
                 <div style={{ position: 'relative', zIndex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                     <h2 style={{ fontSize: '2.5rem', marginBottom: '3rem', textAlign: 'center' }}>How it works</h2>

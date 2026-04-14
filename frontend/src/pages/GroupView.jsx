@@ -304,7 +304,7 @@ const GroupView = () => {
 
   return (
     <div style={{ maxWidth: 1200, margin: '0 auto', padding: '1rem' }}>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem' }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem', flexWrap: 'wrap', gap: '0.75rem' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
           <button className="btn-ghost" onClick={() => navigate('/dashboard')} style={{ padding: '0.5rem' }}>
             <ArrowLeft size={20} />
@@ -313,7 +313,7 @@ const GroupView = () => {
         </div>
         <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
           {/* Informational Debt Buttons */}
-          <div style={{ display: 'flex', gap: '0.6rem', position: 'relative' }} ref={oweListRef}>
+          <div className="balance-buttons" style={{ display: 'flex', gap: '0.6rem', position: 'relative' }} ref={oweListRef}>
             <button
                className="btn-ghost"
                onClick={() => setActiveOweList(activeOweList === 'owed' ? null : 'owed')}
@@ -473,7 +473,7 @@ const GroupView = () => {
       {/* Spacer instead of large cards */}
       <div style={{ height: '0.5rem' }}></div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '280px 1fr 350px', gap: '1.5rem' }} className="mobile-stack">
+      <div className="group-layout" style={{ display: 'grid', gridTemplateColumns: '280px 1fr 350px', gap: '1.5rem' }}>
         {/* ── Left: Members Sidebar ── */}
         <div className="glass-card">
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem' }}>
@@ -959,7 +959,7 @@ const GroupView = () => {
           background: 'rgba(0,0,0,0.6)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 1000,
           backdropFilter: 'blur(4px)'
         }}>
-          <div className="glass-card" style={{ width: 420, maxWidth: '90%', padding: '2rem' }}>
+          <div className="glass-card modal-card" style={{ width: 420, maxWidth: '95%', padding: '2rem' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem' }}>
               <h2 style={{ margin: 0, fontSize: '1.25rem' }}>{settleSuccess ? 'Success!' : 'Settle Debt'}</h2>
               <button className="btn-ghost" style={{ padding: '0.25rem', border: 'none' }} onClick={closeSettleModal}>
@@ -1074,7 +1074,7 @@ const GroupView = () => {
           background: 'rgba(0,0,0,0.6)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 1000,
           backdropFilter: 'blur(4px)'
         }}>
-          <div className="glass-card" style={{ width: 450, maxWidth: '90%', padding: '2rem' }}>
+          <div className="glass-card modal-card" style={{ width: 450, maxWidth: '95%', padding: '2rem' }}>
             <div style={{ textAlign: 'center', marginBottom: '1.5rem' }}>
               <div style={{ 
                 width: 60, height: 60, borderRadius: '50%', background: 'rgba(239, 68, 68, 0.1)', 

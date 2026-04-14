@@ -179,3 +179,122 @@ li { background: var(--bg-secondary); padding: 1rem; border-radius: 8px; margin-
 .search-dropdown { border: 1px solid var(--border-color); background: var(--bg-secondary); border-radius: 8px; max-height: 150px; overflow-y: auto; margin-bottom: 1rem; }
 .search-item { padding: 0.5rem 1rem; cursor: pointer; border-bottom: 1px solid var(--border-color); color: var(--text-primary); }
 .search-item:hover { background: var(--border-color); opacity: 0.8;}
+
+/* ── Animations ── */
+@keyframes fadeIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes slideDown { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes spin { to { transform: rotate(360deg); } }
+.spinner { animation: spin 1s linear infinite; }
+
+/* ── Mobile: Tablet ── */
+@media (max-width: 992px) {
+  .mobile-stack { grid-template-columns: 1fr !important; }
+
+  /* GroupView 3-col → stack: show financial tools first on mobile/tablet */
+  .group-layout {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 1rem !important;
+  }
+  .group-layout > *:nth-child(3) { order: -1; } /* Financial tools first */
+  .group-layout > *:nth-child(2) { order: 0;  } /* Activity feed second */
+  .group-layout > *:nth-child(1) { order: 1;  } /* Members last */
+}
+
+/* Quick Expense Row Desktop */
+.quick-expense-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 40px;
+  gap: 1rem;
+  align-items: center;
+}
+
+/* ── Mobile: Phone ── */
+@media (max-width: 768px) {
+  .app-container {
+    padding: 1rem;
+  }
+
+  .navbar {
+    padding: 0.75rem 1rem;
+  }
+
+  .glass-card {
+    padding: 1.25rem;
+    border-radius: 12px;
+  }
+
+  /* Reduce hover lift on mobile (no hover) */
+  .glass-card:hover {
+    transform: none;
+  }
+
+  h1 { font-size: 1.75rem !important; }
+  h2 { font-size: 1.35rem !important; }
+
+  .btn-primary, .btn-ghost {
+    padding: 0.65rem 1rem;
+    font-size: 0.9rem;
+  }
+
+  /* Dashboard & GroupView header row */
+  .mobile-header-wrap {
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  /* Group balance button strip — allow wrapping */
+  .balance-buttons {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  /* Modals */
+  .modal-card {
+    width: 95% !important;
+    padding: 1.5rem !important;
+  }
+
+  /* Stack the quick expense row on narrow screens */
+  .quick-expense-row {
+    grid-template-columns: 1fr !important;
+  }
+  .quick-expense-row > *:last-child {
+    justify-self: end;
+  }
+
+  /* Landing page hero */
+  .hero-section {
+    padding: 2.5rem 1rem !important;
+    min-height: 50vh !important;
+  }
+  .hero-section h1 {
+    font-size: clamp(2rem, 8vw, 3.5rem) !important;
+  }
+
+  /* "How it works" steps */
+  .steps-section {
+    padding: 2rem 1rem !important;
+  }
+
+  /* Expense / AddExpense page buttons row */
+  .action-row {
+    flex-direction: column !important;
+  }
+}
+
+/* ── Mobile: Small phones ── */
+@media (max-width: 480px) {
+  .app-container { padding: 0.75rem; }
+  .navbar { padding: 0.6rem 0.75rem; }
+  .glass-card { padding: 1rem; }
+
+  /* Hide text on navbar Logo on tiny screens */
+  .navbar-logo-text { font-size: 1.15rem !important; }
+
+  /* Unauth nav buttons */
+  .unauth-nav { gap: 0.35rem !important; }
+  .unauth-nav .btn-ghost,
+  .unauth-nav .btn-primary { padding: 0.5rem 0.75rem !important; font-size: 0.8rem !important; }
+}
+

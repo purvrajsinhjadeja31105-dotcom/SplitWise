@@ -125,7 +125,7 @@ function App() {
           )}
 
           {!isAuthenticated && (
-            <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
+            <div className="unauth-nav" style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
               <button 
                 className="btn-ghost icon-btn" 
                 onClick={toggleTheme} 

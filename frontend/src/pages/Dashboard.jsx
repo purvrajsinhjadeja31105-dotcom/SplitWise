@@ -187,7 +187,7 @@ const Dashboard = () => {
 
   return (
     <div style={{ maxWidth: '100%', margin: '0 auto' }}>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2.5rem' }}>
+      <div className="mobile-header-wrap" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2.5rem' }}>
         <h1 className="text-gradient" style={{ margin: 0, fontSize: '2rem' }}>Dashboard</h1>
         <div style={{ display: 'flex', gap: '1rem' }}>
           <button
@@ -228,7 +228,7 @@ const Dashboard = () => {
           <form onSubmit={handleQuickPersonalExpense}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', marginBottom: '1.5rem' }}>
               {personalItems.map((item, index) => (
-                <div key={index} style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 40px', gap: '1rem', alignItems: 'center' }}>
+                <div key={index} className="quick-expense-row" style={{ display: 'grid', gap: '1rem', alignItems: 'center' }}>
                   <input
                     type="text" placeholder="What did you spend on?" className="input-field"
                     value={item.description} onChange={e => updateExpenseItem(index, 'description', e.target.value)} required
@@ -261,13 +261,13 @@ const Dashboard = () => {
 
       <div className="layout-split" style={{ display: 'flex', gap: '2rem', flexWrap: 'wrap' }}>
         {/* Left Side: Groups List (ONLY) */}
-        <div style={{ flex: '3', minWidth: '350px' }}>
+        <div style={{ flex: '3', minWidth: 'min(100%, 350px)' }}>
           <div className="glass-card">
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem' }}>
               <h2 style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', margin: 0 }}>
                 <Users size={22} /> Your Groups
               </h2>
-              <div style={{ position: 'relative', width: '450px' }}>
+              <div style={{ position: 'relative', width: '100%', maxWidth: '450px' }}>
                 <Search size={16} style={{ position: 'absolute', left: '10px', top: '50%', transform: 'translateY(-50%)', color: 'var(--text-secondary)' }} />
                 <input 
                   type="text" 
@@ -366,7 +366,7 @@ const Dashboard = () => {
         </div>
 
         {/* Right Side: Financial Summary and Activity */}
-        <div style={{ flex: '1.5', minWidth: '300px', display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+        <div style={{ flex: '1.5', minWidth: 'min(100%, 300px)', display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
           {/* Personal Spending Summary */}
           <div 
             className="glass-card" 
