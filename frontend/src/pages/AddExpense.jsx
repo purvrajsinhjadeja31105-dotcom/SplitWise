@@ -22,7 +22,7 @@ const AddExpense = () => {
     const [isAutoSplitActive, setIsAutoSplitActive] = useState(true);
     const [isSubmitting, setIsSubmitting] = useState(false);
 
-    const currentUser = JSON.parse(localStorage.getItem('splitwise_user'));
+    const currentUser = JSON.parse(localStorage.getItem('fairshare_user'));
 
     useEffect(() => {
         fetchInitialData();

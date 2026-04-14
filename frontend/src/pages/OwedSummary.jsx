@@ -72,7 +72,7 @@ const OwedSummary = () => {
         }
     };
 
-    const currentUser = JSON.parse(localStorage.getItem('splitwise_user'));
+    const currentUser = JSON.parse(localStorage.getItem('fairshare_user'));
 
     return (
         <div style={{ maxWidth: 600, margin: '0 auto' }}>

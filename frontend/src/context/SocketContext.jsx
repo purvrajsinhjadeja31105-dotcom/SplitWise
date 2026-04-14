@@ -7,10 +7,10 @@ export const useSocket = () => useContext(SocketContext);
 
 export const SocketProvider = ({ children }) => {
     const [socket, setSocket] = useState(null);
-    const [token, setToken] = useState(localStorage.getItem('splitwise_token'));
+    const [token, setToken] = useState(localStorage.getItem('fairshare_token'));
 
     useEffect(() => {
-        const handleAuthChange = () => setToken(localStorage.getItem('splitwise_token'));
+        const handleAuthChange = () => setToken(localStorage.getItem('fairshare_token'));
         window.addEventListener('storage', handleAuthChange);
         window.addEventListener('auth_change', handleAuthChange);
         return () => {

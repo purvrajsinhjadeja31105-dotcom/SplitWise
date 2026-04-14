@@ -16,12 +16,12 @@ const sendVerificationEmail = async (email, username, token) => {
     const verificationUrl = `${backendUrl}/api/auth/verify?token=${token}`;
 
     const mailOptions = {
-        from: '"SplitWise Clone" <noreply@splitwiseclone.com>',
+        from: '"FairShare Clone" <noreply@splitwiseclone.com>',
         to: email,
-        subject: 'Verify your Email - SplitWise Clone',
+        subject: 'Verify your Email - FairShare Clone',
         html: `
             <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #e2e8f0; border-radius: 12px; background-color: #ffffff;">
-                <h2 style="color: #6366f1; margin-bottom: 20px;">Welcome to SplitWise Clone, ${username}!</h2>
+                <h2 style="color: #6366f1; margin-bottom: 20px;">Welcome to FairShare Clone, ${username}!</h2>
                 <p style="color: #475569; font-size: 16px; line-height: 1.6;">
                     To start splitting expenses with your friends and family, please verify your email address by clicking the button below:
                 </p>
@@ -50,9 +50,9 @@ const sendPasswordResetEmail = async (email, username, token) => {
     const resetUrl = `${frontendUrl}/reset-password?token=${token}`;
 
     const mailOptions = {
-        from: '"SplitWise Clone" <noreply@splitwiseclone.com>',
+        from: '"FairShare Clone" <noreply@splitwiseclone.com>',
         to: email,
-        subject: 'Reset your Password - SplitWise Clone',
+        subject: 'Reset your Password - FairShare Clone',
         html: `
             <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #e2e8f0; border-radius: 12px; background-color: #ffffff;">
                 <h2 style="color: #6366f1; margin-bottom: 20px;">Password Reset Request</h2>

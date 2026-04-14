@@ -35,7 +35,7 @@ const Landing = () => {
             {/* Why Use It Section (Features) */}
             <div style={{ marginTop: '4rem' }}>
                 <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
-                    <h2 style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>Why choose SplitWise?</h2>
+                    <h2 style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>Why choose FairShare?</h2>
                     <p style={{ color: 'var(--text-secondary)', maxWidth: '500px', margin: '0 auto' }}>Designed for simplicity and power, making it incredibly easy to track any shared cost.</p>
                 </div>
                 <div className="grid-2 mobile-stack" style={{ gap: '2rem', maxWidth: '1000px', margin: '0 auto', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', display: 'grid' }}>

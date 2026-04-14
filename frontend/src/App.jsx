@@ -20,18 +20,18 @@ import './index.css';
 
 // Redirect to dashboard if already logged in (for login/register pages)
 const AuthRoute = ({ children }) => {
-  const token = localStorage.getItem('splitwise_token');
+  const token = localStorage.getItem('fairshare_token');
   return token ? <Navigate to="/dashboard" /> : children;
 };
 
 // Redirect to login if not logged in (for protected pages)
 const PrivateRoute = ({ children }) => {
-  const token = localStorage.getItem('splitwise_token');
+  const token = localStorage.getItem('fairshare_token');
   return token ? children : <Navigate to="/login" />;
 };
 
 function App() {
-  const [isAuthenticated, setIsAuthenticated] = useState(!!localStorage.getItem('splitwise_token'));
+  const [isAuthenticated, setIsAuthenticated] = useState(!!localStorage.getItem('fairshare_token'));
   const { theme, toggleTheme } = useContext(ThemeContext);
   const [unreadNotifs, setUnreadNotifs] = useState(0);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -39,7 +39,7 @@ function App() {
   const menuRef = useRef(null);
 
   useEffect(() => {
-    const handleStorageChange = () => setIsAuthenticated(!!localStorage.getItem('splitwise_token'));
+    const handleStorageChange = () => setIsAuthenticated(!!localStorage.getItem('fairshare_token'));
     window.addEventListener('storage', handleStorageChange);
     return () => window.removeEventListener('storage', handleStorageChange);
   }, []);
@@ -79,8 +79,8 @@ function App() {
   }, []);
 
   const handleLogout = () => {
-    localStorage.removeItem('splitwise_token');
-    localStorage.removeItem('splitwise_user');
+    localStorage.removeItem('fairshare_token');
+    localStorage.removeItem('fairshare_user');
     setIsAuthenticated(false);
     window.location.href = '/';
   };
@@ -89,7 +89,7 @@ function App() {
     <Router>
       <nav className="navbar">
         <Link to={isAuthenticated ? '/dashboard' : '/'} style={{ textDecoration: 'none' }}>
-          <h2 className="text-gradient" style={{ margin: 0 }}>SplitWise</h2>
+          <h2 className="text-gradient" style={{ margin: 0 }}>FairShare</h2>
         </Link>
         <div ref={menuRef} style={{ position: 'relative' }}>
           {isAuthenticated && (
@@ -169,6 +169,17 @@ function App() {
           {/* Fallback */}
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
+        
+        <footer style={{
+          textAlign: 'center',
+          padding: '2rem 1rem 1rem',
+          marginTop: '3rem',
+          color: 'var(--text-secondary)',
+          fontSize: '0.9rem',
+          borderTop: '1px solid var(--border-color)'
+        }}>
+          &copy; {new Date().getFullYear()} FairShare. Made by Purvrajsinh.
+        </footer>
       </div>
     </Router>
   );

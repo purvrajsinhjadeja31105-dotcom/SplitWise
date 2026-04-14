@@ -19,7 +19,7 @@ app.use(cors({
 app.use(express.json());
 
 app.get('/', (req, res) => {
-    res.json({ status: 'ok', message: 'SplitWise Clone API is running.' });
+    res.json({ status: 'ok', message: 'FairShare Clone API is running.' });
 });
 
 app.use('/api/auth', require('./routes/auth'));

@@ -10,7 +10,7 @@ const CreateGroup = () => {
     const [searchTerm, setSearchTerm] = useState('');
     const [searchResults, setSearchResults] = useState([]);
     
-    const user = JSON.parse(localStorage.getItem('splitwise_user'));
+    const user = JSON.parse(localStorage.getItem('fairshare_user'));
 
     useEffect(() => {
         if (searchTerm.trim().length > 1) {

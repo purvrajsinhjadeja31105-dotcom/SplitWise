@@ -43,7 +43,7 @@ const GroupView = () => {
   const [memberSearching, setMemberSearching] = useState(false);
   const memberSearchTimeout = useRef(null);
 
-  const currentUser = JSON.parse(localStorage.getItem('splitwise_user'));
+  const currentUser = JSON.parse(localStorage.getItem('fairshare_user'));
 
   useEffect(() => {
     fetchGroupData();

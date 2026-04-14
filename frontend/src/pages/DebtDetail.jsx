@@ -12,7 +12,7 @@ const DebtDetail = () => {
   const [details, setDetails] = useState([]);
   const [netBalance, setNetBalance] = useState(0);
 
-  const currentUser = JSON.parse(localStorage.getItem('splitwise_user'));
+  const currentUser = JSON.parse(localStorage.getItem('fairshare_user'));
 
   useEffect(() => {
     fetchData();

@@ -20,8 +20,8 @@ const Login = ({ setIsAuthenticated }) => {
 
         try {
             const data = await apiCall('/auth/login', 'POST', { email, password });
-            localStorage.setItem('splitwise_token', data.token);
-            localStorage.setItem('splitwise_user', JSON.stringify(data.user));
+            localStorage.setItem('fairshare_token', data.token);
+            localStorage.setItem('fairshare_user', JSON.stringify(data.user));
             setIsAuthenticated(true);
             window.dispatchEvent(new Event('auth_change'));
             navigate('/dashboard');
@@ -108,7 +108,7 @@ const Login = ({ setIsAuthenticated }) => {
 
                 <div style={{ marginTop: '2.5rem', textAlign: 'center', borderTop: '1px solid var(--border-color)', paddingTop: '1.5rem' }}>
                     <p style={{ fontSize: '0.95rem' }}>
-                        New to SplitWise?{' '}
+                        New to FairShare?{' '}
                         <Link to="/register" className="text-gradient" style={{ textDecoration: 'none', fontWeight: 'bold' }}>
                             Create Account
                         </Link>

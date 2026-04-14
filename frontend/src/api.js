@@ -1,7 +1,7 @@
 const API_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000/api';
 
 const authHeader = () => {
-    const token = localStorage.getItem('splitwise_token');
+    const token = localStorage.getItem('fairshare_token');
     return token ? { 'Authorization': `Bearer ${token}` } : {};
 };
 

@@ -64,7 +64,7 @@ const PersonalHistory = () => {
                 personalGroup = { id: res.groupId };
             }
 
-            const user = JSON.parse(localStorage.getItem('splitwise_user'));
+            const user = JSON.parse(localStorage.getItem('fairshare_user'));
             for (const item of validItems) {
                 await apiCall(`/expenses/${personalGroup.id}`, 'POST', {
                     description: item.description,
