@@ -671,8 +671,12 @@ const GroupView = () => {
             const renderExpenseRow = (exp, index, total) => {
               const isSettlement = exp.description.toLowerCase().includes('settlement');
               const dt = new Date(exp.created_at);
-              const dateStr = dt.toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' });
-              const timeStr = dt.toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit', hour12: true });
+              const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+              const dateStr = `${dt.getDate()} ${MONTHS[dt.getMonth()]} ${dt.getFullYear()}`;
+              const hours = dt.getHours();
+              const minutes = String(dt.getMinutes()).padStart(2, '0');
+              const ampm = hours >= 12 ? 'pm' : 'am';
+              const timeStr = `${hours % 12 || 12}:${minutes} ${ampm}`;
               const debtors = (exp.splits || []).filter(s => s.userId != exp.paid_by);
               const otherMembersCount = members.length - 1;
               let paidForLabel;
@@ -720,7 +724,7 @@ const GroupView = () => {
                         <span style={{ color: accentColor, fontWeight: '600' }}>{exp.paid_by_name}</span>
                         {paidForLabel ? ` · ${paidForLabel}` : ''}
                         <span style={{ opacity: 0.5, marginLeft: '0.4rem' }}>· {dateStr}</span>
-                        {exp.is_wrong && (
+                        {!!exp.is_wrong && (
                           <span style={{ 
                             marginLeft: '0.6rem', color: 'var(--danger)', fontWeight: 'bold', fontSize: '0.65rem',
                             padding: '0.1rem 0.4rem', background: 'rgba(239, 68, 68, 0.1)', borderRadius: '4px',
