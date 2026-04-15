@@ -101,7 +101,7 @@ router.get('/verify', async (req, res) => {
                 <div style="max-width: 500px; margin: 0 auto; background: white; padding: 40px; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);">
                     <h1 style="color: #6366f1;">Email Verified Successfully!</h1>
                     <p style="color: #475569; font-size: 16px;">Your account is now active. You can close this window and log in to the app.</p>
-                    <a href="http://localhost:5173/login" style="display: inline-block; background: #6366f1; color: white; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: bold; margin-top: 20px;">Return to Login</a>
+                    <a href="${process.env.FRONTEND_URL || 'http://localhost:5173'}/login" style="display: inline-block; background: #6366f1; color: white; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: bold; margin-top: 20px;">Return to Login</a>
                 </div>
             </div>
         `);
