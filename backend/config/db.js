@@ -2,10 +2,7 @@ const mysql = require('mysql2/promise');
 require('dotenv').config();
 
 const pool = process.env.MYSQL_URL 
-    ? mysql.createPool({ 
-        uri: process.env.MYSQL_URL,
-        ssl: { rejectUnauthorized: false } 
-    })
+    ? mysql.createPool(process.env.MYSQL_URL)
     : mysql.createPool({
         host: process.env.DB_HOST,
         user: process.env.DB_USER,
