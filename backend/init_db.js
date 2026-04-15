@@ -5,8 +5,10 @@ async function initDB() {
     try {
         const connection = await mysql.createConnection({
             host: process.env.DB_HOST,
+            port: process.env.DB_PORT || 3306,
             user: process.env.DB_USER,
-            password: process.env.DB_PASS
+            password: process.env.DB_PASS,
+            ssl: { rejectUnauthorized: false }
         });
 
         await connection.query(`CREATE DATABASE IF NOT EXISTS ${process.env.DB_NAME}`);
