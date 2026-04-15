@@ -23,7 +23,7 @@ const sendVerificationEmail = async (email, username, token) => {
     console.log(`[Email] Attempting to send verification email to: ${email}`);
 
     const mailOptions = {
-        from: '"FairShare" <splitwise2007@gmail.com>', // Match verified Gmail alias
+        from: '"FairShare" <fairshare2007@gmail.com>', // Match verified Gmail alias
         to: email,
         subject: 'Verify your Email - FairShare',
         html: `
@@ -66,7 +66,7 @@ const sendPasswordResetEmail = async (email, username, token) => {
     console.log(`[Email] Attempting to send password reset email to: ${email}`);
 
     const mailOptions = {
-        from: '"FairShare" <splitwise2007@gmail.com>',
+        from: '"FairShare" <fairshare2007@gmail.com>',
         to: email,
         subject: 'Reset your Password - FairShare',
         html: `
