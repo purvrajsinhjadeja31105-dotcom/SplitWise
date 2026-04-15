@@ -18,17 +18,21 @@ app.use(express.json());
 const allowedOrigins = [
     process.env.FRONTEND_URL,
     'https://split-wise-dusky.vercel.app',
+    'https://fair-share-sage.vercel.app',
     'http://localhost:5173', // Vite default
     'http://localhost:3000'
-].filter(Boolean);
+].map(url => url?.replace(/\/$/, '')).filter(Boolean);
 
 app.use(cors({
     origin: (origin, callback) => {
         // Allow requests with no origin (like mobile apps or curl)
         if (!origin) return callback(null, true);
-        if (allowedOrigins.indexOf(origin) !== -1 || process.env.NODE_ENV !== 'production') {
+        
+        const normalizedOrigin = origin.replace(/\/$/, '');
+        if (allowedOrigins.includes(normalizedOrigin) || process.env.NODE_ENV !== 'production') {
             callback(null, true);
         } else {
+            console.error(`[CORS Blocked] Origin "${origin}" is not in allowedOrigins:`, allowedOrigins);
             callback(new Error('Not allowed by CORS'));
         }
     },

@@ -110,7 +110,7 @@ router.post('/:groupId', async (req, res) => {
             // Check if group has an admin (unless it's a personal group)
             const [grpRows] = await connection.query('SELECT admin_id, is_personal FROM expense_groups WHERE id = ?', [groupId]);
             if (!grpRows.length) return res.status(404).json({ error: 'Group not found' });
-            
+
             const group = grpRows[0];
             if (!group.admin_id && !group.is_personal) {
                 return res.status(403).json({ error: 'Cannot add expense: This group has no admin. Please elect one first.' });
@@ -254,7 +254,7 @@ router.delete('/:expenseId', async (req, res) => {
             [expenseId]
         );
         const description = expense.id ? (await db.query('SELECT description FROM expenses WHERE id = ?', [expenseId]))[0][0].description : 'Unknown Expense';
-        
+
         await db.query('DELETE FROM expenses WHERE id = ?', [expenseId]);
 
         const [groupRows] = await db.query('SELECT group_id FROM expenses WHERE id = ?', [expenseId]);
@@ -290,7 +290,7 @@ router.put('/:expenseId', async (req, res) => {
              WHERE e.id = ?`, [expenseId]
         );
         if (!rows.length) return res.status(404).json({ error: 'Expense not found' });
-        
+
         const expense = rows[0];
         if (expense.paid_by !== userId && expense.admin_id !== userId) {
             return res.status(403).json({ error: 'Permission denied' });
@@ -303,7 +303,7 @@ router.put('/:expenseId', async (req, res) => {
         await connection.beginTransaction();
         try {
             await connection.query('UPDATE expenses SET amount = ?, description = ? WHERE id = ?', [amount, description, expenseId]);
-            
+
             if (splits && splits.length > 0) {
                 await connection.query('DELETE FROM expense_splits WHERE expense_id = ?', [expenseId]);
                 for (let split of splits) {
@@ -316,7 +316,7 @@ router.put('/:expenseId', async (req, res) => {
             const groupId = groupRows[0].group_id;
             const [members] = await db.query('SELECT user_id FROM group_members WHERE group_id = ?', [groupId]);
             const memberIds = members.map(m => m.user_id);
-            
+
             socketService.emitToGroup(groupId, memberIds, 'update_expenses', { groupId, action: 'updated' });
             socketService.emitToGroup(groupId, memberIds, 'update_summary', { groupId });
 
@@ -345,7 +345,7 @@ router.post('/:expenseId/mark-wrong', async (req, res) => {
             [expenseId]
         );
         if (!rows.length) return res.status(404).json({ error: 'Expense not found' });
-        
+
         if (rows[0].admin_id !== userId) {
             return res.status(403).json({ error: 'Only the group admin can mark entries as wrong.' });
         }
@@ -360,10 +360,10 @@ router.post('/:expenseId/mark-wrong', async (req, res) => {
         const [expRows] = await db.query('SELECT description, paid_by FROM expenses WHERE id = ?', [expenseId]);
         const { description, paid_by } = expRows[0];
         const statusMsg = isWrong ? 'WRONG' : 'CORRECT';
-        
+
         // General message for group
         const msg = `Notice: Admin marked the expense "${description}" as ${statusMsg}. Associated debts have been ${isWrong ? 'resolved' : 're-instated'}.`;
-        
+
         // Specific message for creator
         const creatorMsg = isWrong ? `Admin flagged your entry "${description}" as WRONG.` : `Admin marked your entry "${description}" as CORRECT.`;
 
