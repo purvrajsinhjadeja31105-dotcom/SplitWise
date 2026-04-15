@@ -54,8 +54,14 @@ app.use('/api/expenses', require('./routes/expenses'));
 app.use('/api/users', require('./routes/users'));
 app.use('/api/notifications', require('./routes/notifications'));
 
-app.get('/api/health', (req, res) => {
-    res.json({ status: 'ok', message: 'backend is running.' });
+app.get('/api/health', async (req, res) => {
+    try {
+        const db = require('./config/db');
+        await db.query('SELECT 1');
+        res.json({ status: 'ok', message: 'backend and database are running.' });
+    } catch (err) {
+        res.status(500).json({ status: 'error', message: 'Database connection failed', details: err.message });
+    }
 });
 
 server.listen(PORT, () => {

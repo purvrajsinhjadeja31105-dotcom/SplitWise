@@ -40,8 +40,12 @@ router.post('/register', async (req, res) => {
             user: { id: result.insertId, username, email } 
         });
     } catch (err) {
-        console.error(err);
-        res.status(500).json({ error: 'Database error' });
+        console.error('Registration Error:', err);
+        res.status(500).json({ 
+            error: 'Database error', 
+            details: err.message,
+            code: err.code 
+        });
     }
 });
 
