@@ -1,6 +1,6 @@
 # 💸 FairShare – Expense Sharing Web Application
 
-
+[Live Demo](https://fair-share-sage.vercel.app/)
 
 A full-stack, real-time expense sharing application inspired by Splitwise, designed to simplify group expense management, debt tracking, and settlements.
 
